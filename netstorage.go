@@ -217,6 +217,15 @@ func (ns *Netstorage) Rmdir(nsPath string) (*http.Response, string, error) {
 	})
 }
 
+// List enlists the content of the entire directory
+func (ns *Netstorage) List(nsPath string) (*http.Response, string, error) {
+	return ns._request(map[string]string{
+		"action": "list&format=xml",
+		"method": "GET",
+		"path":   nsPath,
+	})
+}
+
 // Mtime changes a file’s mtime
 func (ns *Netstorage) Mtime(nsPath string, mtime int64) (*http.Response, string, error) {
 	return ns._request(map[string]string{
